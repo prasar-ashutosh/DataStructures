@@ -25,28 +25,28 @@ public class BinarySearchTree {
 
 		int val = 1;
 		System.out.println("\n\nDeleting a leaf node: " + val);
-		bst.deleteRecursive(tree, val);
+		bst.delete(tree, val);
 		System.out.println("printInOrder: ");
 		bst.printInOrder(tree);
 
 		val = 2;
 		System.out.println("\n\nDeleting a node with no right tree " + val);
 		tree = bst.generateBSTTree();
-		bst.deleteRecursive(tree, val);
+		bst.delete(tree, val);
 		System.out.println("printInOrder: ");
 		bst.printInOrder(tree);
 
 		val = 9;
 		System.out.println("\n\nDeleting a node with no left tree: " + val);
 		tree = bst.generateBSTTree();
-		bst.deleteRecursive(tree, val);
+		bst.delete(tree, val);
 		System.out.println("printInOrder: ");
 		bst.printInOrder(tree);
 
 		val = 7;
 		System.out.println("\n\nDeleting a node with both left and right trees present: " + val);
 		tree = bst.generateBSTTree();
-		bst.deleteRecursive(tree, val);
+		bst.delete(tree, val);
 		System.out.println("printInOrder: ");
 		bst.printInOrder(tree);
 
@@ -179,15 +179,15 @@ public class BinarySearchTree {
 	// if the node to delete has just one children, replace the node by children
 	// if the node to delete has both children , find the minimum value in the
 	// right tree and replace it with the node to be deleted
-	public TreeNode deleteRecursive(TreeNode root, int value) {
+	public TreeNode delete(TreeNode root, int value) {
 		// Base condition
 		if (root == null)
 			return root;
 
 		if (value < root.getData()) {
-			root.setLeft(deleteRecursive(root.getLeft(), value));
+			root.setLeft(delete(root.getLeft(), value));
 		} else if (value > root.getData()) {
-			root.setRight(deleteRecursive(root.getRight(), value));
+			root.setRight(delete(root.getRight(), value));
 		} else {
 			// Found the node to delete
 			if (root.getLeft() == null) {
@@ -198,7 +198,7 @@ public class BinarySearchTree {
 				int val = findLeftMostNode(root.getRight());
 				root.setData(val);
 				// Need to search the right tree only as left tree will be smaller than val
-				root.setRight(deleteRecursive(root.getRight(), val));
+				root.setRight(delete(root.getRight(), val));
 			}
 		}
 		return root;
@@ -247,6 +247,9 @@ public class BinarySearchTree {
 		System.out.println("");
 	}
 
+	/* 
+	 * For any binary tree, not just the BST 
+	 */
 	boolean findPathFromRootToANode(TreeNode node, List<Integer> path, int value) {
 		if (node == null)
 			return false;
