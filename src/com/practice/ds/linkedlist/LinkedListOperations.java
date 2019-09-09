@@ -32,6 +32,10 @@ public class LinkedListOperations {
 		System.out.println("\nDelete a node with value 3");
 		first = deleteNode(3, first);
 		printLinkedList(first);
+		
+		first = reverse(first);
+		System.out.println("Reversed List");
+		printLinkedList(first);		
 	}
 
 	public static Node insertFront(int val, Node first) {
@@ -91,8 +95,8 @@ public class LinkedListOperations {
 	}
 
 	/*
-	 * Return position of the item in the linked List (zero indexed) Return -1
-	 * if not found
+	 * Return position of the item in the linked List (zero indexed) Return -1 if
+	 * not found
 	 */
 	public static int search(int item, Node first) {
 		if (first == null) {
@@ -134,6 +138,20 @@ public class LinkedListOperations {
 			cur = cur.next;
 		}
 		return first;
+	}
+
+	public static Node reverse(Node head) {
+
+		Node prev = null;
+		Node cur = head;
+		Node nxt = null;
+		while (cur != null) {
+			nxt = cur.next;
+			cur.next = prev;
+			prev = cur;
+			cur = nxt;
+		}
+		return prev;
 	}
 
 }

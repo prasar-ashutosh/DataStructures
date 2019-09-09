@@ -15,14 +15,19 @@ public class URLShortening {
 
 	public static int decode(String str) {
 		int num = 0;
-		for (int i = 0; i < str.length(); i++)
-			num = num * BASE + ALPHABET.indexOf(str.charAt(i));
+		String revStr = new StringBuilder(str).reverse().toString();
+		for (int i = 0; i < revStr.length(); i++) {
+			
+			// cb = (2 * 62^1) + (1 * 62^0)
+			// dnh = (3 * 62^2) + ....
+			num += Math.pow(BASE, i) * ALPHABET.indexOf(revStr.charAt(i));
+		}
 		return num;
 	}
-	
+
 	public static void main(String[] args) {
-		System.out.println(encode(1));
-		System.out.println(decode("b"));
+		System.out.println(encode(12345));
+		System.out.println(decode("dnh"));
 
 	}
 

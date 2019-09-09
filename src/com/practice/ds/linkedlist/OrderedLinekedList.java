@@ -8,11 +8,18 @@ public class OrderedLinekedList {
 		first = insert(5, first);
 		first = insert(2, first);
 		first = insert(4, first);
+		first = insert(4, first);
 		first = insert(1, first);
+		first = insert(1, first);
+		first = insert(6, first);
 		first = insert(6, first);
 		System.out.println("Ordered Linked List");
 		LinkedListOperations.printLinkedList(first);
 
+		first = deleteDuplicates(first);
+		System.out.println("Ordered Linked List with duplicates removed");
+		LinkedListOperations.printLinkedList(first);
+		
 		Node list1 = insert(1, null);
 		list1 = insert(3, list1);
 		list1 = insert(5, list1);
@@ -43,7 +50,7 @@ public class OrderedLinekedList {
 
 		Node cur = first;
 		Node prev = null;
-		while (cur != null && item > cur.value) {
+		while (cur != null && item >= cur.value) {
 			prev = cur;
 			cur = cur.next;
 		}
@@ -83,5 +90,26 @@ public class OrderedLinekedList {
 		return merged.next;
 
 	}
+	
+	public static Node deleteDuplicates(Node first) {
+
+		if (first == null || first.next == null)
+			return first;
+		Node cur = first.next;
+		Node prev = first;
+		while (cur != null) {
+			if(cur.value == prev.value) {
+				// Delete the cur element
+				prev.next = cur.next;
+				cur=cur.next;
+			}
+			else {
+				prev = cur;
+				cur = cur.next;
+			}
+		}
+		return first;
+	}
+
 
 }
