@@ -5,7 +5,7 @@ import java.util.TreeMap;
 public class IntegerToRoman {
 
 	public static void main(String[] args) {
-		int nums[] = new int[] { 1, 2, 3, 4, 9 };
+		int nums[] = new int[] { 1, 2, 3, 4, 9 ,40, 1001};
 		String res[] = romanizer(nums);
 		for (String str : res) {
 			System.out.println(str);

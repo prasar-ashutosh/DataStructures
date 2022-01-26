@@ -8,13 +8,12 @@ public class ScannerTest {
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
 		int i = in.nextInt();
-		System.out.println(i);
+		System.out.println("int:" +i);
 		
-		String j = in.nextLine();
-		System.out.println(j);
+		in.nextLine();
 
 		String s = in.next();
-		System.out.println(s);
+		System.out.println("next: "+s);
 		in.close();
 	} 
 	

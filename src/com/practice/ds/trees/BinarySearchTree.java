@@ -13,6 +13,8 @@ public class BinarySearchTree {
 		TreeNode tree = bst.generateBSTTree();
 		System.out.println("\nprintInOrder: ");
 		bst.printInOrder(tree);
+		
+		System.out.println("\n height"+bst.height(tree));
 
 		System.out.println("\nprintPreOrder: ");
 		bst.printPreOrder(tree);
@@ -293,5 +295,6 @@ public class BinarySearchTree {
 		}
 
 	}
+	
 
 }

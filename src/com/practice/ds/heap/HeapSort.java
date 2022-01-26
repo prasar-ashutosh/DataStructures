@@ -9,6 +9,9 @@ public class HeapSort {
 		for (int val : arr) {
 			heap.insert(val);
 		}
+		
+		System.out.println();
+		heap.printHeap();
 		System.out.println("\nHeap size = " + heap.size);
 		// Swap first and last element of heap, delete the last element of heap
 		// and put that in array
@@ -17,6 +20,7 @@ public class HeapSort {
 			heap.swap(0, heap.size - 1);
 			heap.size--;
 			heap.heapifyDown(0);
+			heap.printHeap();
 		}
 		
 		return heap.minHeap;

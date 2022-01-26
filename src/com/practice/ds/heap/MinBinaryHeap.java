@@ -96,7 +96,7 @@ public class MinBinaryHeap {
 	public void heapifyDown(int index) {
 		int val = minHeap[index];
 
-		while (hasLeftChild(index)) {
+		while (hasLeftChild(index) || hasRightChild(index)) {
 			if (minHeap[getleftChildIndex(index)] < val) {
 				swap(index, getleftChildIndex(index));
 				index = getleftChildIndex(index);
@@ -132,6 +132,7 @@ public class MinBinaryHeap {
 		for (int x = 0; x < size; x++) {
 			System.out.print(minHeap[x] + " ");
 		}
+		System.out.println();
 	}
 
 	public static void main(String[] args) throws Exception {
